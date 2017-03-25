@@ -1,0 +1,8 @@
+<h1><%= @article.title %></h1>
+<%= @article.body %> <br>
+<%= link_to( "<< back to articles index", articles_path) %><br>
+<%= link_to 'edit', edit_article_path(@article) %><br>
+<%= link_to "delete", article_path(@article), method: "DELETE", data: {confirm: "Are you sure you want to delete #{@article.title}"} %><br>
+<%= render partial: 'comments/form' %>
+<h3>Comments (<%= @article.comments.count %>)</h3>
+<%= render partial: "articles/comment", collection: @article.comments.reverse %>
